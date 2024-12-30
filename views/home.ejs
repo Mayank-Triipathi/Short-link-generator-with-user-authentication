@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+</head>
+<body>
+    <% if(locals.url){%>
+        <P>Short id => localhost:8000/url/get/<%=url.Shortid%></P><%}%>
+
+
+        <div>
+            <form method="post" action="/url/post">
+                <input type="text" name="url">
+                <button type="submit">submit</button>
+            </form>
+        </div>
+        <%if(locals.urlls){%>
+        <table>
+            <thead>
+                <th>S no.</th>
+                <th>Short-id</th>
+                <th>redirect url</th>
+                <th>no. of clicks</th>
+            </thead>
+            
+                
+                    
+                    <% urlls.forEach((element,index) => { %>
+                        <tr>
+                     <td><%=index+1%></td>
+                     <td>localhost:8000/url/get/<%=element.Shortid%></td>
+                     <td><%=element.url%></td>
+                     <td><%=element.visithistory.length%></td>
+                    </tr>
+                    <% }) %>
+                
+            </tbody>
+            
+        </table>
+        <%}%>
+    
+</body>
+</html>
